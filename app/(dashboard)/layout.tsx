@@ -19,7 +19,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   return (
     <div className="flex h-screen">
-      {/* Sidebar */}
+      {/* Sidebar 
       <aside className="w-60 bg-gray-50 border-r flex flex-col">
         <div className="p-4 font-bold text-lg">Ses Sistemi</div>
         <nav className="flex-1 p-2 space-y-1">
@@ -41,7 +41,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
           })}
         </nav>
       </aside>
-
+    */}
       {/* İçerik */}
       <main className="flex-1 overflow-y-auto p-6">{children}</main>
     </div>

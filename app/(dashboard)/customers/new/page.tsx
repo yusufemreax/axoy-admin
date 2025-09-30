@@ -15,14 +15,13 @@ import {
 import {
   Select, SelectTrigger, SelectValue, SelectContent, SelectItem,
 } from "@/components/ui/select"
+import Image from "next/image"
 
 const fetcher = (url: string) => fetch(url).then((r) => r.json())
 const fmt = (n: number) => n.toLocaleString("tr-TR", { minimumFractionDigits: 2 })
 
 export default function NewCustomerBuilderPage() {
   // ürün & tipler (drawer kullanabilir)
-  const { data: products } = useSWR<any[]>("/api/products", fetcher)
-  const { data: productTypes } = useSWR<any[]>("/api/product-types", fetcher)
 
   // hazır sistemler
   const { data: readySystems } = useSWR<any[]>("/api/ready-systems", fetcher)
@@ -211,7 +210,7 @@ export default function NewCustomerBuilderPage() {
                   <TableRow>
                     <TableCell>
                       {p.image ? (
-                        <img
+                        <Image
                           src={p.image}
                           className="h-10 w-10 object-cover rounded"
                           alt={p.model}

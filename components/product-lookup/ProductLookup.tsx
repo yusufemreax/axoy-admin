@@ -4,18 +4,10 @@ import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
+  Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription,
 } from "@/components/ui/dialog"
 import {
-  Select,
-  SelectTrigger,
-  SelectContent,
-  SelectItem,
-  SelectValue,
+  Select, SelectTrigger, SelectContent, SelectItem, SelectValue,
 } from "@/components/ui/select"
 import useSWR from "swr"
 import type { Product } from "@/app/(dashboard)/products/columns"
@@ -48,21 +40,10 @@ export default function ProductLookup({ value, onChange }: ProductLookupProps) {
 
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent
-          /* 🔥 genişlik fix: sm: ve üstü için !max-w veriyoruz */
-          className="
-            w-[98vw]
-            !max-w-[98vw]
-            sm:!max-w-[96vw]
-            md:!max-w-[1100px]
-            lg:!max-w-[1300px]
-            xl:!max-w-[1500px]
-            2xl:!max-w-[1700px]
-            p-0 overflow-hidden
-          "
+          className="w-[98vw] !max-w-[98vw] sm:!max-w-[96vw] md:!max-w-[1100px] lg:!max-w-[1300px] xl:!max-w-[1500px] 2xl:!max-w-[1700px] p-0 overflow-hidden"
         >
           <DialogHeader className="px-6 py-4 border-b bg-background">
             <DialogTitle>Ürün Seç</DialogTitle>
-            {/* a11y uyarısını da gideriyoruz */}
             <DialogDescription id="lookup-desc" className="sr-only">
               Ürün arama ve seçim penceresi.
             </DialogDescription>
@@ -86,9 +67,8 @@ export default function ProductLookup({ value, onChange }: ProductLookupProps) {
               </Select>
             </div>
 
-            {/* Tablo Alanı */}
+            {/* Tablo */}
             <div className="flex-1 overflow-y-auto overflow-x-auto px-4 pb-4 mt-2">
-              {/* geniş tablolar için yeterli min-width */}
               <div className="min-w-[1200px] xl:min-w-[1400px]">
                 <ProductLookupTable
                   data={
@@ -97,8 +77,9 @@ export default function ProductLookup({ value, onChange }: ProductLookupProps) {
                       : (products || [])
                   }
                   dynamicFields={activeType?.fields || []}
+                  key={selectedType || "all"}
                   onSelect={(p) => {
-                    onChange(p)
+                    onChange(p)       // <- p kesin Product
                     setOpen(false)
                   }}
                 />
