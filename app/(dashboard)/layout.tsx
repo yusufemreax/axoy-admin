@@ -3,9 +3,9 @@
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { Home, Package, Tags, Layers, Wrench, User, Users } from "lucide-react"
+import { Home, Package, Tags, Layers, Wrench, Users } from "lucide-react"
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname()
 
   const menu = [
